@@ -1,7 +1,7 @@
 package stepDefinition;
-import EbayProject.EbayProject.EbayAddToCartPage;
-import EbayProject.EbayProject.EbayHomePage;
-import EbayProject.EbayProject.EbayShoppingCart;
+import EbayProject.Pages.EbayAddToCartPage;
+import EbayProject.Pages.EbayHomePage;
+import EbayProject.Pages.EbayShoppingCart;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import utility.TestBase;
