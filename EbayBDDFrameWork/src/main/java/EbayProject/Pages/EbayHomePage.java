@@ -1,96 +1,69 @@
 package EbayProject.Pages;
-import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import utility.TestBase;
 
-public class EbayHomePage extends TestBase
-{
-   
-	
-	
+public class EbayHomePage extends TestBase {
+
 	public EbayHomePage() {
-		
-		PageFactory.initElements(driver,this);
-		
+
+		PageFactory.initElements(driver, this);
 
 	}
-	
-	@FindBy(xpath="//*[@id='gh-ac']")
+
+	@FindBy(xpath = "//*[@id='gh-ac']")
 	WebElement searchtext;
-	
-	@FindBy(xpath="//*[@id='gh-btn']")
+
+	@FindBy(xpath = "//*[@id='gh-btn']")
 	WebElement searchbutton;
-	
-	
-	@FindBy(xpath="(//*[@class='s-item__wrapper clearfix']/div[2]/a)[1]")
+
+	@FindBy(xpath = "(//*[@class='s-item__wrapper clearfix']/div[2]/a)[1]")
 	WebElement clickitem;
-	
-	
-	
-	public WebElement searchText()
-	{
+
+	public WebElement searchText() {
 		return searchtext;
 	}
-	
-	public WebElement clicksearch()
-	{
+
+	public WebElement clicksearch() {
 		return searchbutton;
 	}
-	
-	
-	
-	
-	//method to search an item
-	public  void searchItem(String Book) throws Exception
-	{
-		
-		searchtext.sendKeys(Book);
-		log.info("Searching for available books");
-		searchbutton.click();
-		log.info("Clicking on Search button");
-		
-	}	
 
-	
-	
-	
-	//Method to click the first available item from the list
-	public EbayAddToCartPage selectItem() throws Exception
-	{
-		try
-		{
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		log.info("Clicking on the first available item");
-		clickitem.click();
+	// method to search an item
+	public void searchItem(String Book) throws Exception {
+		try {
+			new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(searchtext));
+			searchtext.sendKeys(Book);
+			log.info("Searching for available books");
+			new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(searchbutton));
+			searchbutton.click();
+			log.info("Clicking on Search button");
 		}
-		catch (Exception e)
-		{
+
+		catch (Exception e) {
+			TestBase.takeScreenshot();
 			Assert.fail("Element not found to click on the Element");
-			//takeScreenshot();
+
+		}
+	}
+
+	// Method to click the first available item from the list
+	public EbayAddToCartPage selectItem() throws Exception {
+		try {
+			new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(clickitem));
+			log.info("Clicking on the first available item");
+			clickitem.click();
+		} catch (Exception e) {
+			TestBase.takeScreenshot();
+			Assert.fail("Element not found to click on the Element");
+
 		}
 		return new EbayAddToCartPage();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

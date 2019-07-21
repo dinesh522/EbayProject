@@ -1,9 +1,13 @@
 package EbayProject.Pages;
 import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import utility.TestBase;
 
 
@@ -59,13 +63,14 @@ public class EbayAddToCartPage extends TestBase
 		public EbayShoppingCart navigateToShoppingCart() throws Exception
 		{     
 		
-		  try { driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		  
+		  try {;
+		  new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(gotocart));
 		  gotocart.click(); log.info("Click on Go to Cart"); } 
 		  catch(Exception e)
 		  {
+			  TestBase.takeScreenshot();
 		  Assert.fail("Element not found to click on the Element"); 
-		  takeScreenshot();
+		  
 		  }
 		 
 			
@@ -74,7 +79,8 @@ public class EbayAddToCartPage extends TestBase
 		}
 		//Method to get the name of the item added to cart
 		public String getitemName() throws Exception
-		{ itemName= getItemName.getText();
+		{ new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(getItemName));
+			itemName= getItemName.getText();
 		
 		 try
 		 { itemName= getItemName.getText(); 
@@ -83,6 +89,7 @@ public class EbayAddToCartPage extends TestBase
 		 }
 		 catch(Exception e)
 		 {
+			 TestBase.takeScreenshot();
 		  Assert.fail("Element not found to click on the Element"); //takeScreenshot();
 		  }
 		 
@@ -90,5 +97,4 @@ public class EbayAddToCartPage extends TestBase
 		}
 		
 		
-	
 }
