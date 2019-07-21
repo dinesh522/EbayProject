@@ -87,6 +87,7 @@ public class AddToCartStepDefinition extends TestBase {
 	@And("^Close the browser$")
 	public void Close_the_browser()
 	{
+		log.info("Closing the browser");
 		TestBase.closeBrowser();
 	}
 }
