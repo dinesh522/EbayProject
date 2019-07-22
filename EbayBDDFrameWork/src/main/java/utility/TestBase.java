@@ -27,9 +27,7 @@ public class TestBase {
 		log.info("Launching browser");
 	}
 
-	public static void closeBrowser() {
-		driver.quit();
-	}
+	
 
 //Method to take screenshot
 	public static void takeScreenshot() throws Exception {

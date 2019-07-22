@@ -113,7 +113,10 @@ public class EbayShoppingCart extends TestBase {
 		} else {
 			System.out.println("An item is available in the cart");
 		}
-
+		log.info("Closing the Browser");
+		EbayShoppingCart.closeBrowser();
 	}
-
+	public static void closeBrowser() {
+		driver.quit();
+	}
 }
