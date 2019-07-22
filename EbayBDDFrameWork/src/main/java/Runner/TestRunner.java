@@ -18,7 +18,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	@AfterClass
 	public static void ReportSetup() {
 		Reporter.loadXMLConfig(new File(
-				"C:\\Users\\acer\\git\\EbayProject\\EbayBDDFrameWork\\src\\main\\Resources\\extent-report.xml"));
+				"src\\main\\Resources\\extent-report.xml"));
 	}
 
 }

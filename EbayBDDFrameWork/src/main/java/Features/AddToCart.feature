@@ -11,4 +11,5 @@ And verify whether the book is added to the cart
 And Remove the book from the car
 And Go to Cart page
 And veriy the cart is empty
+And Close the browser
 

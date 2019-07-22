@@ -65,12 +65,9 @@ public class AddToCartStepDefinition extends TestBase {
 	@And("^veriy the cart is empty$")
 	public void veriy_the_cart_is_empty() {
 		shopingcart.verifyItemInCart();
-
-	}
-
-	@And("^Close the browser$")
-	public void Close_the_browser() {
-		log.info("Closing the browser");
 		TestBase.closeBrowser();
 	}
+
+	
+	
 }
